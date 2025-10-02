@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bev1e0cni4ipm"
-path="res://.godot/imported/Background test.png-f18341d613e5223852571c7225b8b787.ctex"
+uid="uid://bko265v1647c0"
+path="res://.godot/imported/frogger background prototype.png-7dd400b5bccb910d46ec2fe3bcc99226.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Background test.png"
-dest_files=["res://.godot/imported/Background test.png-f18341d613e5223852571c7225b8b787.ctex"]
+source_file="res://assets/sprites/frogger background prototype.png"
+dest_files=["res://.godot/imported/frogger background prototype.png-7dd400b5bccb910d46ec2fe3bcc99226.ctex"]
 
 [params]
 
