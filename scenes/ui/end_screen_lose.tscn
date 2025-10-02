@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://ceycq32ltmmt4"]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/background.tscn" id="1_sfd4r"]
+[ext_resource type="Script" uid="uid://m8ww10knxs4u" path="res://scripts/ui/end_screen_lose.gd" id="1_vfn7w"]
+[ext_resource type="FontFile" uid="uid://dpmfagp21egmf" path="res://assets/fonts/PixelOperator8.ttf" id="3_72nmc"]
+[ext_resource type="Theme" uid="uid://xyh70ylh1adp" path="res://assets/themes/new_theme.tres" id="4_bnhvy"]
+[ext_resource type="PackedScene" uid="uid://dea8gda2jhdv8" path="res://scenes/ui/pause_ui.tscn" id="5_72nmc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bnhvy"]
+font = ExtResource("3_72nmc")
+font_size = 8
+
+[sub_resource type="InputEventKey" id="InputEventKey_vuvqp"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_72nmc"]
+events = [SubResource("InputEventKey_vuvqp")]
+
+[node name="EndScreenLose" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vfn7w")
+
+[node name="Background" parent="." instance=ExtResource("1_sfd4r")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="GameOverLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+texture_filter = 1
+layout_mode = 2
+text = "You lost"
+label_settings = SubResource("LabelSettings_bnhvy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLoseLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Your score : X"
+label_settings = SubResource("LabelSettings_bnhvy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestScoreLoseLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Best score : X"
+label_settings = SubResource("LabelSettings_bnhvy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("4_bnhvy")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 16
+shortcut = SubResource("Shortcut_72nmc")
+text = "Replay"
+icon_alignment = 1
+
+[node name="PauseUI" parent="." instance=ExtResource("5_72nmc")]
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]
