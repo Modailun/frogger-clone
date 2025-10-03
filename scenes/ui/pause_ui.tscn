@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://dea8gda2jhdv8"]
+
+[ext_resource type="Script" uid="uid://di5mrjhwsu2yw" path="res://scripts/ui/pause_ui.gd" id="1_ypbrs"]
+[ext_resource type="FontFile" uid="uid://dpmfagp21egmf" path="res://assets/fonts/PixelOperator8.ttf" id="2_vcehk"]
+[ext_resource type="Texture2D" uid="uid://bona84v8wkab7" path="res://assets/sprites/exit icon.png" id="2_ypbrs"]
+
+[sub_resource type="Theme" id="Theme_ypbrs"]
+default_font = ExtResource("2_vcehk")
+default_font_size = 8
+
+[sub_resource type="InputEventAction" id="InputEventAction_yrwkb"]
+action = &"pause"
+
+[sub_resource type="Shortcut" id="Shortcut_ypbrs"]
+events = [SubResource("InputEventAction_yrwkb")]
+
+[node name="PauseUI" type="CanvasLayer"]
+scale = Vector2(0.25, 0.25)
+transform = Transform2D(0.25, 0, 0, 0.25, 0, 0)
+script = ExtResource("1_ypbrs")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(0.25, 0.25)
+theme = SubResource("Theme_ypbrs")
+shortcut = SubResource("Shortcut_ypbrs")
+texture_normal = ExtResource("2_ypbrs")
+stretch_mode = 0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
