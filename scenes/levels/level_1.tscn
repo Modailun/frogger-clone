@@ -100,7 +100,7 @@ anchor_mode = 0
 script = ExtResource("10_qxy0u")
 
 [node name="Player" parent="." instance=ExtResource("2_oc4kc")]
-position = Vector2(128, 174)
+position = Vector2(167, 174)
 
 [node name="Enemies" type="Node2D" parent="."]
 

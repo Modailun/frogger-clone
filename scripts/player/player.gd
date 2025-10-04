@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var sprite_size: int = 12
-var initial_position: Vector2 = Vector2(128, 174)
+var initial_position: Vector2 = Vector2(167, 174)
 var is_alive: bool = true
 
 @onready var game_manager: Node = %GameManager
