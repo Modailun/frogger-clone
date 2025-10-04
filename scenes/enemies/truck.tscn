@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://doqnxpp1323oa"]
+
+[ext_resource type="Texture2D" uid="uid://bt1aixln5p20a" path="res://icon.svg" id="1_gf7ap"]
+[ext_resource type="Script" uid="uid://cp14qqmgoylw6" path="res://scripts/enemies/truck.gd" id="1_xyupd"]
+[ext_resource type="Texture2D" uid="uid://77gk8m3ag5ul" path="res://assets/sprites/Demon size 2.5 fixed.png" id="3_o74pg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyupd"]
+size = Vector2(30, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nqv6"]
+atlas = ExtResource("3_o74pg")
+region = Rect2(0, 0, 544, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prga2"]
+atlas = ExtResource("3_o74pg")
+region = Rect2(544, 0, 544, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixbdd"]
+atlas = ExtResource("3_o74pg")
+region = Rect2(1088, 0, 544, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05wre"]
+atlas = ExtResource("3_o74pg")
+region = Rect2(0, 224, 544, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkvxk"]
+atlas = ExtResource("3_o74pg")
+region = Rect2(544, 224, 544, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4w8s"]
+atlas = ExtResource("3_o74pg")
+region = Rect2(1088, 224, 544, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f4w8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nqv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prga2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixbdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05wre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkvxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4w8s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="Truck" type="Area2D"]
+script = ExtResource("1_xyupd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.28125, 0.09375001)
+texture = ExtResource("1_gf7ap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xyupd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.063, 0.063)
+sprite_frames = SubResource("SpriteFrames_f4w8s")
+autoplay = "default"
+frame_progress = 0.84560806
+flip_h = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
