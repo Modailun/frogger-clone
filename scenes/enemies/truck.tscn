@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://doqnxpp1323oa"]
+[gd_scene load_steps=4 format=3 uid="uid://doqnxpp1323oa"]
 
 [ext_resource type="Texture2D" uid="uid://bt1aixln5p20a" path="res://icon.svg" id="1_gf7ap"]
+[ext_resource type="Script" uid="uid://cp14qqmgoylw6" path="res://scripts/enemies/truck.gd" id="1_xyupd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyupd"]
-size = Vector2(36, 14)
+size = Vector2(36, 12)
 
-[node name="Truck" type="CharacterBody2D"]
+[node name="Truck" type="Area2D"]
+script = ExtResource("1_xyupd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.28125, 0.109375)
+scale = Vector2(0.28125, 0.09375001)
 texture = ExtResource("1_gf7ap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xyupd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

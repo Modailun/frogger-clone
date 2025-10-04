@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1k1talcwwqjv"]
+[gd_scene load_steps=15 format=3 uid="uid://b1k1talcwwqjv"]
 
 [ext_resource type="Texture2D" uid="uid://bko265v1647c0" path="res://assets/sprites/frogger background prototype.png" id="1_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://dea8gda2jhdv8" path="res://scenes/ui/pause_ui.tscn" id="2_nsrm0"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bsbei6hkab7hu" path="res://scenes/levels/wall.tscn" id="4_x42e6"]
 [ext_resource type="Script" uid="uid://bbjrkulvs5lmt" path="res://scripts/levels/game_manager.gd" id="6_oc4kc"]
 [ext_resource type="FontFile" uid="uid://dpmfagp21egmf" path="res://assets/fonts/PixelOperator8.ttf" id="7_s8va5"]
-[ext_resource type="PackedScene" uid="uid://b8hbjnirn1ndh" path="res://scenes/enemies/bike.tscn" id="8_s8va5"]
 [ext_resource type="PackedScene" uid="uid://bia3qjrpips5m" path="res://scenes/enemies/car.tscn" id="9_dga24"]
 [ext_resource type="PackedScene" uid="uid://bralakkil5xeb" path="res://scenes/enemies/big_car.tscn" id="10_excbq"]
 [ext_resource type="Script" uid="uid://j4cami0rcgps" path="res://scripts/levels/screen_shake.gd" id="10_qxy0u"]
@@ -33,9 +32,6 @@ font_size = 8
 position = Vector2(160, 90)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_sk5k4")
-
-[node name="Player" parent="BackgroundLevel1" instance=ExtResource("2_oc4kc")]
-position = Vector2(128, 174)
 
 [node name="PauseUI" parent="." instance=ExtResource("2_nsrm0")]
 
@@ -78,6 +74,9 @@ label_settings = SubResource("LabelSettings_oc4kc")
 wait_time = 0.6
 one_shot = true
 
+[node name="BikeTimer" type="Timer" parent="GameManager"]
+autostart = true
+
 [node name="MainTheme" type="AudioStreamPlayer2D" parent="."]
 autoplay = true
 
@@ -85,9 +84,6 @@ autoplay = true
 unique_name_in_owner = true
 anchor_mode = 0
 script = ExtResource("10_qxy0u")
-
-[node name="Bike" parent="." instance=ExtResource("8_s8va5")]
-position = Vector2(6, 161)
 
 [node name="Car" parent="." instance=ExtResource("9_dga24")]
 position = Vector2(10, 109)
@@ -101,4 +97,8 @@ position = Vector2(18, 122)
 [node name="Bus" parent="." instance=ExtResource("12_iav0o")]
 position = Vector2(52, 148)
 
+[node name="Player" parent="." instance=ExtResource("2_oc4kc")]
+position = Vector2(128, 174)
+
 [connection signal="timeout" from="GameManager/GameOverTimer" to="GameManager" method="_on_game_over_timer_timeout"]
+[connection signal="timeout" from="GameManager/BikeTimer" to="GameManager" method="_on_bike_timer_timeout"]

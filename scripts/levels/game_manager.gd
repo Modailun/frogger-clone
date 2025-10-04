@@ -7,33 +7,20 @@ var lives: int = 3
 var count: int = 0
 # Multiplicateur de score (augmente toutes les 5 secondes)
 var mul: int = 1
-#var mothership_scene: PackedScene = preload("res://scenes/enemies/mothership.tscn")
-# Position de départ (à droite de l'écran)
-var start_position_right : Vector2 = Vector2(336, 16)  # Ajuste selon ton jeu
-var start_position_left : Vector2 = Vector2(-16, 16)  # Ajuste selon ton jeu
-var mothership_count: int = 0
+# Scène de bike (préchargée pour instanciation)
+var bike_scene: PackedScene = preload("res://scenes/enemies/bike.tscn")
 
 @onready var score_label: Label = $ScoreLabel
 @onready var best_score_label: Label = $BestScoreLabel
 @onready var lives_label: Label = $LivesLabel
 @onready var game_over_timer: Timer = $GameOverTimer
+@onready var bike_timer: Timer = $BikeTimer
 
 func _ready() -> void:
 	# Initialise les labels avec les valeurs de départ
 	score_label.text = "Score: " + str(score)
 	lives_label.text = "Lives: " + str(lives)
 	best_score_label.text = "Best score: " + str(get_high_score())
-	
-# func _on_mothership_timer_timeout() -> void:
-# 	# Instancie un nouvel mothership
-# 	var mothership = mothership_scene.instantiate()
-# 	if mothership_count % 2 == 0:
-# 		mothership.position = start_position_right
-# 	else:
-# 		mothership.position = start_position_left
-# 	mothership_count += 1
-# 	# Ajoute l'mothership à la scène
-# 	add_child(mothership)
 
 # Ajoute des points au score
 func add_point(points: int) -> void:
@@ -105,3 +92,12 @@ func get_high_score() -> int:
 func _on_game_over_timer_timeout() -> void:
 	Engine.time_scale = 1
 	game_over(false)
+
+
+func _on_bike_timer_timeout() -> void:
+	# Instancie un nouvel bike
+	var bike = bike_scene.instantiate()
+	bike.position = Vector2(-13, 161)  # Position de départ (à gauche de l'écran)
+	# Ajoute bike à la scène
+	add_child(bike)
+	bike_timer.wait_time = randf_range(1.5, 3.0)
