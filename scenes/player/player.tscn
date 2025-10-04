@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3eeaom37vld2"]
+[gd_scene load_steps=9 format=3 uid="uid://c3eeaom37vld2"]
 
-[ext_resource type="Texture2D" uid="uid://bt1aixln5p20a" path="res://icon.svg" id="1_8afob"]
 [ext_resource type="Script" uid="uid://ck6kw4ws608ca" path="res://scripts/player/player.gd" id="1_dovo2"]
 [ext_resource type="Texture2D" uid="uid://b1w70ykllbt6f" path="res://assets/sprites/Perso Frogger.png" id="3_gmlin"]
 
@@ -50,15 +49,8 @@ script = ExtResource("1_dovo2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8afob")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(-2.9802322e-07, -2.9802322e-07)
-scale = Vector2(0.093749985, 0.093749985)
-texture = ExtResource("1_8afob")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.0625, 0.0625)
 sprite_frames = SubResource("SpriteFrames_qek5x")
 autoplay = "default"
-frame_progress = 0.13754654
+frame_progress = 0.8463234
