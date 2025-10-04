@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1k1talcwwqjv"]
+[gd_scene load_steps=16 format=3 uid="uid://b1k1talcwwqjv"]
 
 [ext_resource type="Texture2D" uid="uid://bko265v1647c0" path="res://assets/sprites/frogger background prototype.png" id="1_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://dea8gda2jhdv8" path="res://scenes/ui/pause_ui.tscn" id="2_nsrm0"]
@@ -6,7 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bsbei6hkab7hu" path="res://scenes/levels/wall.tscn" id="4_x42e6"]
 [ext_resource type="Script" uid="uid://bbjrkulvs5lmt" path="res://scripts/levels/game_manager.gd" id="6_oc4kc"]
 [ext_resource type="FontFile" uid="uid://dpmfagp21egmf" path="res://assets/fonts/PixelOperator8.ttf" id="7_s8va5"]
+[ext_resource type="PackedScene" uid="uid://b8hbjnirn1ndh" path="res://scenes/enemies/bike.tscn" id="8_s8va5"]
+[ext_resource type="PackedScene" uid="uid://bia3qjrpips5m" path="res://scenes/enemies/car.tscn" id="9_dga24"]
+[ext_resource type="PackedScene" uid="uid://bralakkil5xeb" path="res://scenes/enemies/big_car.tscn" id="10_excbq"]
 [ext_resource type="Script" uid="uid://j4cami0rcgps" path="res://scripts/levels/screen_shake.gd" id="10_qxy0u"]
+[ext_resource type="PackedScene" uid="uid://doqnxpp1323oa" path="res://scenes/enemies/truck.tscn" id="11_excbq"]
+[ext_resource type="PackedScene" uid="uid://pxsyuqcvl7nr" path="res://scenes/enemies/bus.tscn" id="12_iav0o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dga24"]
 font = ExtResource("7_s8va5")
@@ -28,9 +33,6 @@ font_size = 8
 position = Vector2(160, 90)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_sk5k4")
-
-[node name="Player" parent="BackgroundLevel1" instance=ExtResource("2_oc4kc")]
-position = Vector2(128, 174)
 
 [node name="PauseUI" parent="." instance=ExtResource("2_nsrm0")]
 
@@ -73,6 +75,22 @@ label_settings = SubResource("LabelSettings_oc4kc")
 wait_time = 0.6
 one_shot = true
 
+[node name="BikeTimer" type="Timer" parent="GameManager"]
+autostart = true
+
+[node name="BusTimer" type="Timer" parent="GameManager"]
+wait_time = 2.0
+autostart = true
+
+[node name="BigCarTime" type="Timer" parent="GameManager"]
+autostart = true
+
+[node name="TruckTimer" type="Timer" parent="GameManager"]
+autostart = true
+
+[node name="CarTimer" type="Timer" parent="GameManager"]
+autostart = true
+
 [node name="MainTheme" type="AudioStreamPlayer2D" parent="."]
 autoplay = true
 
@@ -81,4 +99,50 @@ unique_name_in_owner = true
 anchor_mode = 0
 script = ExtResource("10_qxy0u")
 
+[node name="Player" parent="." instance=ExtResource("2_oc4kc")]
+position = Vector2(167, 174)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Bike" parent="Enemies" instance=ExtResource("8_s8va5")]
+position = Vector2(23, 161)
+
+[node name="Bike2" parent="Enemies" instance=ExtResource("8_s8va5")]
+position = Vector2(76, 161)
+
+[node name="Bike3" parent="Enemies" instance=ExtResource("8_s8va5")]
+position = Vector2(156, 161)
+
+[node name="Bike4" parent="Enemies" instance=ExtResource("8_s8va5")]
+position = Vector2(238, 161)
+
+[node name="Bus" parent="Enemies" instance=ExtResource("12_iav0o")]
+position = Vector2(95, 148)
+
+[node name="Big Car" parent="Enemies" instance=ExtResource("10_excbq")]
+position = Vector2(37, 135)
+
+[node name="Big Car2" parent="Enemies" instance=ExtResource("10_excbq")]
+position = Vector2(221, 135)
+
+[node name="Truck" parent="Enemies" instance=ExtResource("11_excbq")]
+position = Vector2(64, 122)
+
+[node name="Truck2" parent="Enemies" instance=ExtResource("11_excbq")]
+position = Vector2(293, 122)
+
+[node name="Car" parent="Enemies" instance=ExtResource("9_dga24")]
+position = Vector2(216, 110)
+
+[node name="Car2" parent="Enemies" instance=ExtResource("9_dga24")]
+position = Vector2(145, 110)
+
+[node name="Car3" parent="Enemies" instance=ExtResource("9_dga24")]
+position = Vector2(43, 110)
+
 [connection signal="timeout" from="GameManager/GameOverTimer" to="GameManager" method="_on_game_over_timer_timeout"]
+[connection signal="timeout" from="GameManager/BikeTimer" to="GameManager" method="_on_bike_timer_timeout"]
+[connection signal="timeout" from="GameManager/BusTimer" to="GameManager" method="_on_bus_timer_timeout"]
+[connection signal="timeout" from="GameManager/BigCarTime" to="GameManager" method="_on_big_car_time_timeout"]
+[connection signal="timeout" from="GameManager/TruckTimer" to="GameManager" method="_on_truck_timer_timeout"]
+[connection signal="timeout" from="GameManager/CarTimer" to="GameManager" method="_on_car_timer_timeout"]

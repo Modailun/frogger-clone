@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfh7p2wxoo4h8"]
+
+[ext_resource type="Script" uid="uid://bbjrkulvs5lmt" path="res://scripts/levels/game_manager.gd" id="1_qgb6k"]
+[ext_resource type="FontFile" uid="uid://dpmfagp21egmf" path="res://assets/fonts/PixelOperator8.ttf" id="2_jh16g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dga24"]
+font = ExtResource("2_jh16g")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_qxy0u"]
+font = ExtResource("2_jh16g")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_oc4kc"]
+font = ExtResource("2_jh16g")
+font_size = 8
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_qgb6k")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 112.0
+offset_right = 224.0
+offset_bottom = 24.0
+text = "Score = X"
+label_settings = SubResource("LabelSettings_dga24")
+
+[node name="BestScoreLabel" type="Label" parent="."]
+offset_left = 200.0
+offset_right = 352.0
+offset_bottom = 23.0
+text = "Best Score = X"
+label_settings = SubResource("LabelSettings_qxy0u")
+
+[node name="LivesLabel" type="Label" parent="."]
+offset_left = 24.0
+offset_right = 112.0
+offset_bottom = 23.0
+text = "Lives = X"
+label_settings = SubResource("LabelSettings_oc4kc")
+
+[node name="GameOverTimer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[node name="BikeTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="BusTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="BigCarTime" type="Timer" parent="."]
+autostart = true
+
+[node name="TruckTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CarTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]
+[connection signal="timeout" from="BikeTimer" to="." method="_on_bike_timer_timeout"]
+[connection signal="timeout" from="BusTimer" to="." method="_on_bus_timer_timeout"]
+[connection signal="timeout" from="BigCarTime" to="." method="_on_big_car_time_timeout"]
+[connection signal="timeout" from="TruckTimer" to="." method="_on_truck_timer_timeout"]
+[connection signal="timeout" from="CarTimer" to="." method="_on_car_timer_timeout"]

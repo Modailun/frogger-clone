@@ -7,33 +7,29 @@ var lives: int = 3
 var count: int = 0
 # Multiplicateur de score (augmente toutes les 5 secondes)
 var mul: int = 1
-#var mothership_scene: PackedScene = preload("res://scenes/enemies/mothership.tscn")
-# Position de départ (à droite de l'écran)
-var start_position_right : Vector2 = Vector2(336, 16)  # Ajuste selon ton jeu
-var start_position_left : Vector2 = Vector2(-16, 16)  # Ajuste selon ton jeu
-var mothership_count: int = 0
+var sprite_size: int = 12
+# Preload des scène d'ennemies
+var bike_scene: PackedScene = preload("res://scenes/enemies/bike.tscn")
+var bus_scene: PackedScene = preload("res://scenes/enemies/bus.tscn")
+var big_car_scene: PackedScene = preload("res://scenes/enemies/big_car.tscn")
+var truck_scene: PackedScene = preload("res://scenes/enemies/truck.tscn")
+var car_scene: PackedScene = preload("res://scenes/enemies/car.tscn")
 
 @onready var score_label: Label = $ScoreLabel
 @onready var best_score_label: Label = $BestScoreLabel
 @onready var lives_label: Label = $LivesLabel
 @onready var game_over_timer: Timer = $GameOverTimer
+@onready var bike_timer: Timer = $BikeTimer
+@onready var bus_timer: Timer = $BusTimer
+@onready var big_car_timer: Timer = $BigCarTime
+@onready var truck_timer: Timer = $TruckTimer
+@onready var car_timer: Timer = $CarTimer
 
 func _ready() -> void:
 	# Initialise les labels avec les valeurs de départ
 	score_label.text = "Score: " + str(score)
 	lives_label.text = "Lives: " + str(lives)
 	best_score_label.text = "Best score: " + str(get_high_score())
-	
-# func _on_mothership_timer_timeout() -> void:
-# 	# Instancie un nouvel mothership
-# 	var mothership = mothership_scene.instantiate()
-# 	if mothership_count % 2 == 0:
-# 		mothership.position = start_position_right
-# 	else:
-# 		mothership.position = start_position_left
-# 	mothership_count += 1
-# 	# Ajoute l'mothership à la scène
-# 	add_child(mothership)
 
 # Ajoute des points au score
 func add_point(points: int) -> void:
@@ -105,3 +101,43 @@ func get_high_score() -> int:
 func _on_game_over_timer_timeout() -> void:
 	Engine.time_scale = 1
 	game_over(false)
+
+func _on_bike_timer_timeout() -> void:
+	# Instancie un nouvel bike
+	var bike = bike_scene.instantiate()
+	bike.position = Vector2(-sprite_size, 161)  # Position de départ (à gauche de l'écran)
+	# Ajoute bike à la scène
+	add_child(bike)
+	bike_timer.wait_time = randf_range(1.0, 3.0)
+
+func _on_bus_timer_timeout() -> void:
+	# Instancie un nouvel bus
+	var bus = bus_scene.instantiate()
+	bus.position = Vector2(-5*sprite_size, 148)  # Position de départ (à gauche de l'écran)
+	# Ajoute bus à la scène
+	add_child(bus)
+	bus_timer.wait_time = randf_range(2.0, 4.0)
+
+func _on_car_timer_timeout() -> void:
+	# Instancie un nouvel car
+	var car = car_scene.instantiate()
+	car.position = Vector2(320+2*sprite_size, 109)  # Position de départ (à gauche de l'écran)
+	# Ajoute car à la scène
+	add_child(car)
+	car_timer.wait_time = randf_range(1.0, 3.0)
+
+func _on_truck_timer_timeout() -> void:
+	# Instancie un nouvel truck
+	var truck = truck_scene.instantiate()
+	truck.position = Vector2(320+3*sprite_size, 122)  # Position de départ (à gauche de l'écran)
+	# Ajoute truck à la scène
+	add_child(truck)
+	truck_timer.wait_time = randf_range(2.0, 4.0)
+
+func _on_big_car_time_timeout() -> void:
+	# Instancie un nouvel big_car
+	var big_car = big_car_scene.instantiate()
+	big_car.position = Vector2(-2*sprite_size, 135)  # Position de départ (à gauche de l'écran)
+	# Ajoute big_car à la scène
+	add_child(big_car)
+	big_car_timer.wait_time = randf_range(1.0, 3.0)
