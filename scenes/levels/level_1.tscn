@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1k1talcwwqjv"]
+[gd_scene load_steps=19 format=3 uid="uid://b1k1talcwwqjv"]
 
 [ext_resource type="Texture2D" uid="uid://bko265v1647c0" path="res://assets/sprites/frogger background prototype.png" id="1_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://dea8gda2jhdv8" path="res://scenes/ui/pause_ui.tscn" id="2_nsrm0"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://doqnxpp1323oa" path="res://scenes/enemies/truck.tscn" id="11_excbq"]
 [ext_resource type="PackedScene" uid="uid://pxsyuqcvl7nr" path="res://scenes/enemies/bus.tscn" id="12_iav0o"]
 [ext_resource type="PackedScene" uid="uid://depkwrwggan1r" path="res://scenes/levels/lilypad.tscn" id="13_dnkej"]
+[ext_resource type="Script" uid="uid://idtbngklvdsj" path="res://scripts/levels/river.gd" id="14_mm8aj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dga24"]
 font = ExtResource("7_s8va5")
@@ -25,6 +26,9 @@ font_size = 8
 [sub_resource type="LabelSettings" id="LabelSettings_oc4kc"]
 font = ExtResource("7_s8va5")
 font_size = 8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnkej"]
+size = Vector2(320, 64)
 
 [node name="Level1" type="Node2D"]
 
@@ -158,9 +162,17 @@ position = Vector2(245, 16)
 [node name="Lilypad5" parent="Goals" instance=ExtResource("13_dnkej")]
 position = Vector2(310, 16)
 
+[node name="River" type="Area2D" parent="."]
+script = ExtResource("14_mm8aj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="River"]
+position = Vector2(160, 57)
+shape = SubResource("RectangleShape2D_dnkej")
+
 [connection signal="timeout" from="GameManager/GameOverTimer" to="GameManager" method="_on_game_over_timer_timeout"]
 [connection signal="timeout" from="GameManager/BikeTimer" to="GameManager" method="_on_bike_timer_timeout"]
 [connection signal="timeout" from="GameManager/BusTimer" to="GameManager" method="_on_bus_timer_timeout"]
 [connection signal="timeout" from="GameManager/BigCarTime" to="GameManager" method="_on_big_car_time_timeout"]
 [connection signal="timeout" from="GameManager/TruckTimer" to="GameManager" method="_on_truck_timer_timeout"]
 [connection signal="timeout" from="GameManager/CarTimer" to="GameManager" method="_on_car_timer_timeout"]
+[connection signal="body_entered" from="River" to="River" method="_on_body_entered"]

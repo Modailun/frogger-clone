@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2gb6c5fdhfle" path="res://assets/sprites/Ange Frogger.png" id="2_dovo2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8afob"]
-size = Vector2(12, 12)
+size = Vector2(10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
 atlas = ExtResource("2_dovo2")
