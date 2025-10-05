@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1k1talcwwqjv"]
+[gd_scene load_steps=17 format=3 uid="uid://b1k1talcwwqjv"]
 
 [ext_resource type="Texture2D" uid="uid://bko265v1647c0" path="res://assets/sprites/frogger background prototype.png" id="1_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://dea8gda2jhdv8" path="res://scenes/ui/pause_ui.tscn" id="2_nsrm0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://j4cami0rcgps" path="res://scripts/levels/screen_shake.gd" id="10_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://doqnxpp1323oa" path="res://scenes/enemies/truck.tscn" id="11_excbq"]
 [ext_resource type="PackedScene" uid="uid://pxsyuqcvl7nr" path="res://scenes/enemies/bus.tscn" id="12_iav0o"]
+[ext_resource type="PackedScene" uid="uid://depkwrwggan1r" path="res://scenes/levels/lilypad.tscn" id="13_dnkej"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dga24"]
 font = ExtResource("7_s8va5")
@@ -139,6 +140,23 @@ position = Vector2(145, 110)
 
 [node name="Car3" parent="Enemies" instance=ExtResource("9_dga24")]
 position = Vector2(43, 110)
+
+[node name="Goals" type="Node2D" parent="."]
+
+[node name="Lilypad" parent="Goals" instance=ExtResource("13_dnkej")]
+position = Vector2(11, 16)
+
+[node name="Lilypad2" parent="Goals" instance=ExtResource("13_dnkej")]
+position = Vector2(89, 16)
+
+[node name="Lilypad3" parent="Goals" instance=ExtResource("13_dnkej")]
+position = Vector2(167, 16)
+
+[node name="Lilypad4" parent="Goals" instance=ExtResource("13_dnkej")]
+position = Vector2(245, 16)
+
+[node name="Lilypad5" parent="Goals" instance=ExtResource("13_dnkej")]
+position = Vector2(310, 16)
 
 [connection signal="timeout" from="GameManager/GameOverTimer" to="GameManager" method="_on_game_over_timer_timeout"]
 [connection signal="timeout" from="GameManager/BikeTimer" to="GameManager" method="_on_bike_timer_timeout"]
