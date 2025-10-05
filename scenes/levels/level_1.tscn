@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b1k1talcwwqjv"]
+[gd_scene load_steps=20 format=3 uid="uid://b1k1talcwwqjv"]
 
 [ext_resource type="Texture2D" uid="uid://bko265v1647c0" path="res://assets/sprites/frogger background prototype.png" id="1_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://dea8gda2jhdv8" path="res://scenes/ui/pause_ui.tscn" id="2_nsrm0"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://pxsyuqcvl7nr" path="res://scenes/enemies/bus.tscn" id="12_iav0o"]
 [ext_resource type="PackedScene" uid="uid://depkwrwggan1r" path="res://scenes/levels/lilypad.tscn" id="13_dnkej"]
 [ext_resource type="Script" uid="uid://idtbngklvdsj" path="res://scripts/levels/river.gd" id="14_mm8aj"]
+[ext_resource type="PackedScene" uid="uid://cc03pvqohnto3" path="res://scenes/levels/turtle.tscn" id="15_wtwp4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dga24"]
 font = ExtResource("7_s8va5")
@@ -28,7 +29,7 @@ font = ExtResource("7_s8va5")
 font_size = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnkej"]
-size = Vector2(320, 64)
+size = Vector2(320, 62)
 
 [node name="Level1" type="Node2D"]
 
@@ -104,9 +105,6 @@ unique_name_in_owner = true
 anchor_mode = 0
 script = ExtResource("10_qxy0u")
 
-[node name="Player" parent="." instance=ExtResource("2_oc4kc")]
-position = Vector2(167, 174)
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Bike" parent="Enemies" instance=ExtResource("8_s8va5")]
@@ -169,6 +167,27 @@ script = ExtResource("14_mm8aj")
 position = Vector2(160, 57)
 shape = SubResource("RectangleShape2D_dnkej")
 
+[node name="Turtle2" parent="." instance=ExtResource("15_wtwp4")]
+position = Vector2(167, 83)
+
+[node name="Turtle3" parent="." instance=ExtResource("15_wtwp4")]
+position = Vector2(167, 70)
+
+[node name="Turtle4" parent="." instance=ExtResource("15_wtwp4")]
+position = Vector2(167, 57)
+
+[node name="Turtle5" parent="." instance=ExtResource("15_wtwp4")]
+position = Vector2(167, 44)
+
+[node name="Turtle6" parent="." instance=ExtResource("15_wtwp4")]
+position = Vector2(167, 31)
+
+[node name="Turtle" parent="." instance=ExtResource("15_wtwp4")]
+position = Vector2(180, 83)
+
+[node name="Player" parent="." instance=ExtResource("2_oc4kc")]
+position = Vector2(167, 174)
+
 [connection signal="timeout" from="GameManager/GameOverTimer" to="GameManager" method="_on_game_over_timer_timeout"]
 [connection signal="timeout" from="GameManager/BikeTimer" to="GameManager" method="_on_bike_timer_timeout"]
 [connection signal="timeout" from="GameManager/BusTimer" to="GameManager" method="_on_bus_timer_timeout"]
@@ -176,3 +195,4 @@ shape = SubResource("RectangleShape2D_dnkej")
 [connection signal="timeout" from="GameManager/TruckTimer" to="GameManager" method="_on_truck_timer_timeout"]
 [connection signal="timeout" from="GameManager/CarTimer" to="GameManager" method="_on_car_timer_timeout"]
 [connection signal="body_entered" from="River" to="River" method="_on_body_entered"]
+[connection signal="body_exited" from="River" to="River" method="_on_body_exited"]

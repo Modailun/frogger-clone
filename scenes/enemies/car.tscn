@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b7drlclb3ra8g" path="res://assets/sprites/demon size 2.png" id="3_ld76f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsr3e"]
-size = Vector2(20, 10)
+size = Vector2(16, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_86l62"]
 atlas = ExtResource("3_ld76f")
@@ -52,7 +52,7 @@ shape = SubResource("RectangleShape2D_fsr3e")
 scale = Vector2(0.063, 0.063)
 sprite_frames = SubResource("SpriteFrames_lm3ij")
 autoplay = "default"
-frame_progress = 0.45678127
+frame_progress = 0.6849891
 flip_h = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
