@@ -5,6 +5,7 @@ var initial_position: Vector2 = Vector2(167, 174)
 var is_alive: bool = true
 var active_collision_count : int = 0
 var is_drowning: bool = false
+var is_dying: bool = false
 var is_moving: bool = false  # Pour éviter les mouvements superposés
 var tween : Tween
 
@@ -19,7 +20,7 @@ func _ready() -> void:
 func _process(_delta):
 	if is_alive:
 		if tween == null or not tween.is_running():
-			if is_drowning:
+			if is_drowning or is_dying:
 				died()
 
 
@@ -60,6 +61,7 @@ func died() -> void:
 		collision_shape_2d.queue_free()
 		screen_shake.apply_shake(30.0)
 	is_drowning = false
+	is_dying = false
 	game_manager.lose_life()
 
 func _on_log_coll_area_exited(area: Area2D) -> void:
