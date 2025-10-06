@@ -54,5 +54,3 @@ sprite_frames = SubResource("SpriteFrames_lm3ij")
 autoplay = "default"
 frame_progress = 0.6849891
 flip_h = true
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

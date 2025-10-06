@@ -1,4 +1,4 @@
-extends Container
+extends MarginContainer
 
 @onready var start_game: Button = $MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/StartGame
 
@@ -18,5 +18,3 @@ func _on_credits_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
-
-

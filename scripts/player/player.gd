@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 
 var sprite_size: int = 12
 var initial_position: Vector2 = Vector2(167, 174)
@@ -8,21 +8,21 @@ var is_drowning: bool = false
 var is_dying: bool = false
 var is_moving: bool = false  # Pour éviter les mouvements superposés
 var tween : Tween
+var vel := Vector2.ZERO
 
 @onready var game_manager: Node = %GameManager
 @onready var screen_shake: Camera2D = %ScreenShake
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
 	position = initial_position  # Start position
 	add_to_group("player")
 
-func _process(_delta):
+func _process(delta):
 	if is_alive:
 		if tween == null or not tween.is_running():
 			if is_drowning or is_dying:
 				died()
-
+		position += vel * delta
 
 func _physics_process(_delta: float) -> void:
 	var viewport_size = get_viewport_rect().size
@@ -58,25 +58,36 @@ func died() -> void:
 		is_alive = true
 		screen_shake.apply_shake(2.0)
 	else:
-		collision_shape_2d.queue_free()
 		screen_shake.apply_shake(30.0)
 	is_drowning = false
 	is_dying = false
 	game_manager.lose_life()
 
-func _on_log_coll_area_exited(area: Area2D) -> void:
-	if area.is_in_group("safe_zone"):
-		print("Exited safe zone")
-		active_collision_count -= 1
-		# Si plus aucune collision active et que le joueur est dans l'eau
-		if active_collision_count == 0 and position.y < 86 and is_alive:
-			print("Drowned")
-			is_drowning = true
-
 func _on_log_coll_area_entered(area: Area2D) -> void:
-	if area.is_in_group("safe_zone"):
-		print("Collision with safe zone")
-		active_collision_count += 1
-	elif area.is_in_group("river") and active_collision_count <= 0 and is_alive:
-		print("Collision with river")
+	if area.is_in_group("river") and active_collision_count <= 0 and is_alive:
 		is_drowning = true
+	elif area.is_in_group("enemy"):
+		is_dying = true
+
+# func _on_log_coll_area_exited(area: Area2D) -> void:
+# 	if area.is_in_group("safe_zone"):
+# 		active_collision_count -= 1
+# 		# Si plus aucune collision active et que le joueur est dans l'eau
+# 		if active_collision_count == 0 and position.y < 86 and is_alive:
+# 			print("Drowned")
+# 			is_drowning = true
+
+func _on_log_coll_body_entered(body: Node2D) -> void:
+	print("Collision with body")
+	active_collision_count += 1
+	vel = body.vel
+
+
+func _on_log_coll_body_exited(_body: Node2D) -> void:
+	print("Exited body")
+	active_collision_count -= 1
+	# Si plus aucune collision active et que le joueur est dans l'eau
+	if active_collision_count == 0 and position.y < 86 and is_alive:
+		print("Drowned")
+		is_drowning = true
+		vel = Vector2.ZERO

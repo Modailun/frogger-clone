@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bseno10n84fix"]
+
+[ext_resource type="PackedScene" uid="uid://dau0gxs2f8x70" path="res://scenes/levels/log.tscn" id="1_63ucs"]
+[ext_resource type="Script" uid="uid://cf1hkbun5v23p" path="res://scripts/levels/log_5.gd" id="1_658l4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_658l4"]
+size = Vector2(60, 12)
+
+[node name="Log5" type="CharacterBody2D"]
+script = ExtResource("1_658l4")
+
+[node name="Log" parent="." instance=ExtResource("1_63ucs")]
+
+[node name="Log2" parent="." instance=ExtResource("1_63ucs")]
+position = Vector2(12, 0)
+
+[node name="Log3" parent="." instance=ExtResource("1_63ucs")]
+position = Vector2(24, 0)
+
+[node name="Log4" parent="." instance=ExtResource("1_63ucs")]
+position = Vector2(-12, 0)
+
+[node name="Log5" parent="." instance=ExtResource("1_63ucs")]
+position = Vector2(-24, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_658l4")
