@@ -58,4 +58,5 @@ shape = SubResource("RectangleShape2D_liq5f")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.063, 0.063)
 sprite_frames = SubResource("SpriteFrames_gndel")
+autoplay = "default"
 frame_progress = 0.46731088
