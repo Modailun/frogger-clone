@@ -1,19 +1,76 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8hbjnirn1ndh"]
+[gd_scene load_steps=12 format=3 uid="uid://b8hbjnirn1ndh"]
 
-[ext_resource type="Texture2D" uid="uid://bt1aixln5p20a" path="res://icon.svg" id="1_8y88e"]
 [ext_resource type="Script" uid="uid://b82vpka4hjpcw" path="res://scripts/enemies/bike.gd" id="1_fsr3e"]
+[ext_resource type="Texture2D" uid="uid://b2o1or5y44wt0" path="res://assets/sprites/moto.png" id="2_fsr3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsr3e"]
 size = Vector2(12, 6)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_re5va"]
+atlas = ExtResource("2_fsr3e")
+region = Rect2(0, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4p8a"]
+atlas = ExtResource("2_fsr3e")
+region = Rect2(192, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlx8w"]
+atlas = ExtResource("2_fsr3e")
+region = Rect2(384, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka0eq"]
+atlas = ExtResource("2_fsr3e")
+region = Rect2(576, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdfcd"]
+atlas = ExtResource("2_fsr3e")
+region = Rect2(0, 128, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fakd"]
+atlas = ExtResource("2_fsr3e")
+region = Rect2(192, 128, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trgqo"]
+atlas = ExtResource("2_fsr3e")
+region = Rect2(384, 128, 192, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rrb6d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_re5va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4p8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlx8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka0eq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdfcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fakd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trgqo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="Bike" type="Area2D"]
 script = ExtResource("1_fsr3e")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.09375, 0.046875)
-texture = ExtResource("1_8y88e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fsr3e")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.063, 0.063)
+sprite_frames = SubResource("SpriteFrames_rrb6d")
+autoplay = "default"
+frame_progress = 0.14544891

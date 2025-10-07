@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dau0gxs2f8x70"]
+
+[ext_resource type="Texture2D" uid="uid://bt1aixln5p20a" path="res://icon.svg" id="1_26gwd"]
+[ext_resource type="Script" uid="uid://e4vjdo3ljvxv" path="res://scripts/levels/log.gd" id="1_fx7qa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fx7qa"]
+size = Vector2(12, 12)
+
+[node name="Log" type="Area2D"]
+script = ExtResource("1_fx7qa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fx7qa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09375, 0.09375)
+texture = ExtResource("1_26gwd")

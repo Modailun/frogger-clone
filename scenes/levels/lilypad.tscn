@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://depkwrwggan1r"]
+
+[ext_resource type="Script" uid="uid://c78vk3l5mc4n0" path="res://scripts/levels/lilypad.gd" id="1_1qwx1"]
+[ext_resource type="Texture2D" uid="uid://dv52wgybmb641" path="res://assets/sprites/lilypad.png" id="1_7ni8e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qwx1"]
+size = Vector2(12, 16)
+
+[node name="Lilypad" type="Area2D"]
+script = ExtResource("1_1qwx1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1qwx1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("1_7ni8e")
