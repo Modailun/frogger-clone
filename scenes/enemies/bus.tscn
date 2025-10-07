@@ -1,19 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://pxsyuqcvl7nr"]
+[gd_scene load_steps=10 format=3 uid="uid://pxsyuqcvl7nr"]
 
-[ext_resource type="Texture2D" uid="uid://bt1aixln5p20a" path="res://icon.svg" id="1_3hud1"]
 [ext_resource type="Script" uid="uid://chbwh2iiohmh2" path="res://scripts/enemies/bus.gd" id="1_liq5f"]
+[ext_resource type="Texture2D" uid="uid://dhwmbetepfqgg" path="res://assets/sprites/Bus fixed.png" id="2_liq5f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_liq5f"]
-size = Vector2(104, 12)
+size = Vector2(96, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gejuo"]
+atlas = ExtResource("2_liq5f")
+region = Rect2(0, 0, 1536, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylgq5"]
+atlas = ExtResource("2_liq5f")
+region = Rect2(1536, 0, 1536, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi8iu"]
+atlas = ExtResource("2_liq5f")
+region = Rect2(3072, 0, 1536, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw6nw"]
+atlas = ExtResource("2_liq5f")
+region = Rect2(0, 192, 1536, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efb85"]
+atlas = ExtResource("2_liq5f")
+region = Rect2(1536, 192, 1536, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gndel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gejuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylgq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pi8iu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw6nw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efb85")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="Bus" type="Area2D"]
 script = ExtResource("1_liq5f")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.8125, 0.09375001)
-texture = ExtResource("1_3hud1")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_liq5f")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.063, 0.063)
+sprite_frames = SubResource("SpriteFrames_gndel")
+frame_progress = 0.46731088

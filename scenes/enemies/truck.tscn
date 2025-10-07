@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://doqnxpp1323oa"]
+[gd_scene load_steps=11 format=3 uid="uid://doqnxpp1323oa"]
 
-[ext_resource type="Texture2D" uid="uid://bt1aixln5p20a" path="res://icon.svg" id="1_gf7ap"]
 [ext_resource type="Script" uid="uid://cp14qqmgoylw6" path="res://scripts/enemies/truck.gd" id="1_xyupd"]
 [ext_resource type="Texture2D" uid="uid://77gk8m3ag5ul" path="res://assets/sprites/Demon size 2.5 fixed.png" id="3_o74pg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyupd"]
-size = Vector2(30, 12)
+size = Vector2(24, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nqv6"]
 atlas = ExtResource("3_o74pg")
@@ -60,11 +59,6 @@ animations = [{
 [node name="Truck" type="Area2D"]
 script = ExtResource("1_xyupd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.28125, 0.09375001)
-texture = ExtResource("1_gf7ap")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xyupd")
 
@@ -72,7 +66,5 @@ shape = SubResource("RectangleShape2D_xyupd")
 scale = Vector2(0.063, 0.063)
 sprite_frames = SubResource("SpriteFrames_f4w8s")
 autoplay = "default"
-frame_progress = 0.84560806
+frame_progress = 0.7408708
 flip_h = true
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
