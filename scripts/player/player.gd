@@ -69,19 +69,10 @@ func _on_log_coll_area_entered(area: Area2D) -> void:
 	elif area.is_in_group("enemy"):
 		is_dying = true
 
-# func _on_log_coll_area_exited(area: Area2D) -> void:
-# 	if area.is_in_group("safe_zone"):
-# 		active_collision_count -= 1
-# 		# Si plus aucune collision active et que le joueur est dans l'eau
-# 		if active_collision_count == 0 and position.y < 86 and is_alive:
-# 			print("Drowned")
-# 			is_drowning = true
-
 func _on_log_coll_body_entered(body: Node2D) -> void:
 	print("Collision with body")
 	active_collision_count += 1
 	vel = body.vel
-
 
 func _on_log_coll_body_exited(_body: Node2D) -> void:
 	print("Exited body")

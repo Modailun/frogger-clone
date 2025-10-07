@@ -90,6 +90,26 @@ autostart = true
 [node name="CarTimer" type="Timer" parent="GameManager"]
 autostart = true
 
+[node name="Turtle3Timer" type="Timer" parent="GameManager"]
+wait_time = 5.0
+autostart = true
+
+[node name="Log3Timer" type="Timer" parent="GameManager"]
+wait_time = 5.0
+autostart = true
+
+[node name="Log5Timer" type="Timer" parent="GameManager"]
+wait_time = 5.0
+autostart = true
+
+[node name="Turtle2Timer" type="Timer" parent="GameManager"]
+wait_time = 5.0
+autostart = true
+
+[node name="Log4Timer" type="Timer" parent="GameManager"]
+wait_time = 5.0
+autostart = true
+
 [node name="MainTheme" type="AudioStreamPlayer2D" parent="."]
 autoplay = true
 
@@ -168,8 +188,14 @@ position = Vector2(287, 44)
 [node name="Turtle3" parent="SafeZones" instance=ExtResource("15_v6ha0")]
 position = Vector2(27, 44)
 
+[node name="Turtle10" parent="SafeZones" instance=ExtResource("15_v6ha0")]
+position = Vector2(90, 44)
+
 [node name="Turtle4" parent="SafeZones" instance=ExtResource("15_v6ha0")]
 position = Vector2(156, 44)
+
+[node name="Turtle11" parent="SafeZones" instance=ExtResource("15_v6ha0")]
+position = Vector2(220, 44)
 
 [node name="Turtle5" parent="SafeZones" instance=ExtResource("16_gmpev")]
 position = Vector2(182, 83)
@@ -183,17 +209,26 @@ position = Vector2(59, 83)
 [node name="Turtle8" parent="SafeZones" instance=ExtResource("16_gmpev")]
 position = Vector2(253, 83)
 
+[node name="Turtle9" parent="SafeZones" instance=ExtResource("16_gmpev")]
+position = Vector2(329, 83)
+
 [node name="Log3" parent="SafeZones" instance=ExtResource("17_mkypq")]
 position = Vector2(162, 70)
 
 [node name="Log5" parent="SafeZones" instance=ExtResource("17_mkypq")]
 position = Vector2(92, 70)
 
+[node name="Log11" parent="SafeZones" instance=ExtResource("17_mkypq")]
+position = Vector2(19, 70)
+
 [node name="Log4" parent="SafeZones" instance=ExtResource("17_mkypq")]
 position = Vector2(260, 70)
 
 [node name="Log6" parent="SafeZones" instance=ExtResource("18_ndtll")]
 position = Vector2(131, 57)
+
+[node name="Log12" parent="SafeZones" instance=ExtResource("18_ndtll")]
+position = Vector2(31, 57)
 
 [node name="Log7" parent="SafeZones" instance=ExtResource("18_ndtll")]
 position = Vector2(261, 57)
@@ -207,6 +242,9 @@ position = Vector2(164, 31)
 [node name="Log10" parent="SafeZones" instance=ExtResource("19_7h2jl")]
 position = Vector2(245, 31)
 
+[node name="Log13" parent="SafeZones" instance=ExtResource("19_7h2jl")]
+position = Vector2(326, 31)
+
 [node name="Player" parent="." instance=ExtResource("2_oc4kc")]
 position = Vector2(167, 174)
 
@@ -216,5 +254,10 @@ position = Vector2(167, 174)
 [connection signal="timeout" from="GameManager/BigCarTime" to="GameManager" method="_on_big_car_time_timeout"]
 [connection signal="timeout" from="GameManager/TruckTimer" to="GameManager" method="_on_truck_timer_timeout"]
 [connection signal="timeout" from="GameManager/CarTimer" to="GameManager" method="_on_car_timer_timeout"]
+[connection signal="timeout" from="GameManager/Turtle3Timer" to="GameManager" method="_on_turtle_3_timer_timeout"]
+[connection signal="timeout" from="GameManager/Log3Timer" to="GameManager" method="_on_log_3_timer_timeout"]
+[connection signal="timeout" from="GameManager/Log5Timer" to="GameManager" method="_on_log_5_timer_timeout"]
+[connection signal="timeout" from="GameManager/Turtle2Timer" to="GameManager" method="_on_turtle_2_timer_timeout"]
+[connection signal="timeout" from="GameManager/Log4Timer" to="GameManager" method="_on_log_4_timer_timeout"]
 [connection signal="body_entered" from="River" to="River" method="_on_body_entered"]
 [connection signal="body_exited" from="River" to="River" method="_on_body_exited"]

@@ -12,6 +12,7 @@ const Scenes := {
 
 var latest_score : int = 0
 var high_score : int = 0
+var difficulty : int = 1
 
 # Fonction pour changer de scène
 func change_scene(new_scene_path: String) -> void:

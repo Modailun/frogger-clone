@@ -13,4 +13,4 @@ func _physics_process(_delta: float) -> void:
 	set_velocity(vel)
 	move_and_slide()
 	if position.x < -2*sprite_size:  # Si le big car sort de l'écran à droite
-		queue_free()  # Le détruit
+		position.x = get_viewport_rect().size.x + 2*sprite_size
