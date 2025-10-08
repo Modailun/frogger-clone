@@ -32,7 +32,7 @@ font = ExtResource("7_s8va5")
 font_size = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnkej"]
-size = Vector2(320, 62)
+size = Vector2(320, 64)
 
 [node name="Level1" type="Node2D"]
 
@@ -177,7 +177,7 @@ position = Vector2(310, 16)
 script = ExtResource("14_mm8aj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="River"]
-position = Vector2(160, 57)
+position = Vector2(160, 56)
 shape = SubResource("RectangleShape2D_dnkej")
 
 [node name="SafeZones" type="Node2D" parent="."]

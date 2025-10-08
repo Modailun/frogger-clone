@@ -6,7 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qwx1"]
 size = Vector2(12, 16)
 
-[node name="Lilypad" type="Area2D"]
+[node name="Lilypad" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_1qwx1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3eeaom37vld2"]
+[gd_scene load_steps=15 format=3 uid="uid://c3eeaom37vld2"]
 
 [ext_resource type="Script" uid="uid://ck6kw4ws608ca" path="res://scripts/player/player.gd" id="1_dovo2"]
 [ext_resource type="Texture2D" uid="uid://b2gb6c5fdhfle" path="res://assets/sprites/Ange Frogger.png" id="2_dovo2"]
@@ -77,6 +77,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
 size = Vector2(6, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
+size = Vector2(6, 8)
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_dovo2")
 
@@ -91,7 +94,14 @@ frame_progress = 0.03190581
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LogColl"]
 shape = SubResource("RectangleShape2D_dovo2")
 
+[node name="LilColl" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LilColl"]
+shape = SubResource("RectangleShape2D_gmlin")
+
 [connection signal="area_entered" from="LogColl" to="." method="_on_log_coll_area_entered"]
-[connection signal="area_exited" from="LogColl" to="." method="_on_log_coll_area_exited"]
 [connection signal="body_entered" from="LogColl" to="." method="_on_log_coll_body_entered"]
 [connection signal="body_exited" from="LogColl" to="." method="_on_log_coll_body_exited"]
+[connection signal="body_entered" from="LilColl" to="." method="_on_lil_coll_body_entered"]

@@ -14,6 +14,8 @@ var bus_scene: PackedScene = preload("res://scenes/enemies/bus.tscn")
 var big_car_scene: PackedScene = preload("res://scenes/enemies/big_car.tscn")
 var truck_scene: PackedScene = preload("res://scenes/enemies/truck.tscn")
 var car_scene: PackedScene = preload("res://scenes/enemies/car.tscn")
+var player_scene: PackedScene = preload("res://scenes/player/player.tscn")
+var initial_position: Vector2 = Vector2(167, 174)
 
 @onready var score_label: Label = $ScoreLabel
 @onready var best_score_label: Label = $BestScoreLabel
@@ -47,6 +49,7 @@ func lose_life() -> void:
 	if lives > 1:
 		lives -= 1  # Retire une vie
 		mul = 1  # Réinitialise le multiplicateur
+		score = max(0, score - 10)
 		# Met à jour l'affichage du score et des vies
 		score_label.text = "Score: " + str(score)
 		lives_label.text = "Lives: " + str(lives)
@@ -141,3 +144,7 @@ func _on_big_car_time_timeout() -> void:
 	# Ajoute big_car à la scène
 	add_child(big_car)
 	big_car_timer.wait_time = randf_range(1.0, 3.0)
+
+func create_player() -> void:
+	var player = player_scene.instantiate()
+	player.position = initial_position
