@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://b1k1talcwwqjv"]
 
-[ext_resource type="Texture2D" uid="uid://bko265v1647c0" path="res://assets/sprites/frogger background prototype.png" id="1_sk5k4"]
+[ext_resource type="Texture2D" uid="uid://bnxaa2skuil0j" path="res://assets/sprites/background frogger.png" id="1_np2pn"]
 [ext_resource type="PackedScene" uid="uid://dea8gda2jhdv8" path="res://scenes/ui/pause_ui.tscn" id="2_nsrm0"]
 [ext_resource type="PackedScene" uid="uid://c3eeaom37vld2" path="res://scenes/player/player.tscn" id="2_oc4kc"]
 [ext_resource type="Script" uid="uid://bbjrkulvs5lmt" path="res://scripts/levels/game_manager.gd" id="6_oc4kc"]
@@ -41,7 +41,7 @@ size = Vector2(320, 62)
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundLevel1"]
 position = Vector2(160, 90)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_sk5k4")
+texture = ExtResource("1_np2pn")
 
 [node name="PauseUI" parent="." instance=ExtResource("2_nsrm0")]
 
